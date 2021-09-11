@@ -1,1 +1,4 @@
-# Cell_control
+# Cell Control
+
+Atmega328p controlled over SMS
+
