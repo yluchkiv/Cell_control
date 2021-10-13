@@ -29,11 +29,12 @@ int main()
 	USART_Init();
 	DDRB |= 0b0010'0000;
 
-	while (true) {
-		PORTB ^= 0b0010'0000;
+	unsigned char data = '0';
+
+	for ( ; ; ) {
+		PORTB ^= PORTB5;
 		_delay_ms(500);
 
-		static unsigned char data = '0';
 		USART_Transmit(data);
 		if (++data > '9') {
 			data = '0';
