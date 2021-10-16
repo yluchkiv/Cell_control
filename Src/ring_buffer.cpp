@@ -1,8 +1,10 @@
 #include "ring_buffer.h"
 
 ring_buffer::ring_buffer(size_t buf_size) {
+	if (buf_size > 0) {
+		data_ = new uint8_t[buf_size];
+	}
 	size_ = buf_size;
-	data_ = new uint8_t[buf_size];
 }
 
 ring_buffer::~ring_buffer() { delete[] data_; }

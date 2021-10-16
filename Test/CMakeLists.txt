@@ -19,7 +19,10 @@ link_directories(../../googletest/build/lib)
 set(SOURCES
 	../Src/sw_component.cpp
 	../Src/ring_buffer.cpp)
-set(TESTS test_sw_component.cpp)
+
+set(TESTS
+	test_sw_component.cpp
+	test_ring_buffer.cpp)
 
 link_libraries(gtest gtest_main pthread)
 
@@ -29,6 +32,6 @@ add_test(NAME c_test COMMAND g_test)
 add_custom_target(coverage
 	COMMAND find ./ -name "*.gcda" | xargs -n1 -r rm
 	COMMAND make g_test
-	COMMAND ${CMAKE_BINARY_DIR}/g_test
+	COMMAND valgrind --leak-check=full ${CMAKE_BINARY_DIR}/g_test
 	COMMAND gcovr -r ${CMAKE_SOURCE_DIR}/../Src --html --html-details -o cov.html ${CMAKE_BINARY_DIR}
 )
