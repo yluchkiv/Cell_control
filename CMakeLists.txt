@@ -14,7 +14,11 @@ set(CMAKE_BUILD_TYPE Release)
 
 add_compile_definitions(${PROG} PUBLIC F_CPU=16000000)
 
-add_executable(${PROG} main.cpp)
+include_directories(Inc)
+add_executable(${PROG}
+	main.cpp
+	Src/sw_component.cpp
+	Src/ring_buffer.cpp)
 
 add_custom_command(
 	TARGET ${PROG} POST_BUILD

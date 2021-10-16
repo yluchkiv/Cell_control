@@ -16,7 +16,9 @@ include_directories(../Inc)
 include_directories(../../googletest/googletest/include)
 link_directories(../../googletest/build/lib)
 
-set(SOURCES ../Src/sw_component.cpp)
+set(SOURCES
+	../Src/sw_component.cpp
+	../Src/ring_buffer.cpp)
 set(TESTS test_sw_component.cpp)
 
 link_libraries(gtest gtest_main pthread)

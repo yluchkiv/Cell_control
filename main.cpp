@@ -1,5 +1,10 @@
+#include <stddef.h>
+#include <stdlib.h>
+
 #include <avr/io.h>
 #include <util/delay.h>
+
+#include "ring_buffer.h"
 
 #define BAUD 19200
 #define UBRR (F_CPU / 16 / BAUD - 1)
@@ -27,6 +32,7 @@ int main() {
 	DDRB |= 0b0010'0000;
 
 	unsigned char data = '0';
+	ring_buffer buf(64);
 
 	for (;;) {
 		PORTB ^= PORTB5;
@@ -36,7 +42,13 @@ int main() {
 		if (++data > '9') {
 			data = '0';
 		}
+
+		buf.write(data);
 	}
 
 	return 0;
 }
+
+void *operator new[](size_t size) { return malloc(size); }
+void operator delete[](void *ptr) { free(ptr); }
+void operator delete[](void *ptr, unsigned int) { free(ptr); }
