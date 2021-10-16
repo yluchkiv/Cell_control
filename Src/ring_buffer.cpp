@@ -11,7 +11,9 @@ ring_buffer::ring_buffer(size_t buf_size) {   // найбільше значен
 ring_buffer::~ring_buffer() { delete[] data_; }
 
 bool ring_buffer::write(uint8_t b) {
-	if (this->count() < (size_ - 1)) {
+	if (size_ == 0) {
+		return false;
+	} else if (this->count() < (size_ - 1)) {
 		data_[head_++] = b;
 		if (head_ >= size_) {
 			head_ = 0;

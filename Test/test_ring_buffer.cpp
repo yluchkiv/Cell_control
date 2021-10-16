@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+
 TEST(RingBufferTest, Test_0) { 
 	EXPECT_EQ(0U, ring_buffer(0).count()); 
 }
@@ -84,4 +85,52 @@ TEST(RingBufferTest, Test_6){
 	buf.read(result);
 	EXPECT_EQ(0U, buf.count());
 	EXPECT_EQ(56, result);
+}
+
+TEST(RingBufferTest, ZeroSize) {
+	ring_buffer buf(0);
+	EXPECT_EQ(buf.count(), 0);
+
+	EXPECT_EQ(buf.write(255), false);
+	EXPECT_EQ(buf.count(), 0);
+}
+
+TEST(RingBufferTest, BufferCount) {
+	ring_buffer buf(567);
+
+	EXPECT_EQ(buf.count(), 0);
+
+	buf.write(0);
+	buf.write(5);
+	EXPECT_EQ(buf.count(), 2);
+}
+
+TEST(RingBufferTest, BufferOverflow) {
+	ring_buffer buf(2);
+	EXPECT_EQ(buf.write(3), true);
+	EXPECT_EQ(buf.write(4), false);
+
+	uint8_t d;
+	EXPECT_EQ(buf.read(d), true);
+	EXPECT_EQ(d, 3);
+}
+
+TEST(RingBufferTest, RollOver) {
+	ring_buffer buf(2);
+	EXPECT_EQ(buf.write(3), true);
+	EXPECT_EQ(buf.write(4), false);
+
+	uint8_t d;
+	EXPECT_EQ(buf.read(d), true);
+	EXPECT_EQ(d, 3);
+
+	EXPECT_EQ(buf.write(5), true);
+	EXPECT_EQ(buf.read(d), true);
+	EXPECT_EQ(d, 5);
+}
+
+TEST(RingBufferTest, BufferUnderflow) {
+	ring_buffer buf(2);
+	uint8_t d;
+	EXPECT_EQ(buf.read(d), false);
 }
