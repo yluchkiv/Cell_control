@@ -13,6 +13,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -fprofile-arcs -ftest-coverage")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage")
 
 include_directories(../Inc)
+include_directories(../../googletest/googletest/include)
+link_directories(../../googletest/build/lib)
+
 set(SOURCES ../Src/sw_component.cpp)
 set(TESTS test_sw_component.cpp)
 
