@@ -24,5 +24,5 @@ add_test(NAME c_test COMMAND g_test)
 add_custom_target(coverage
 	COMMAND make g_test
 	COMMAND ${CMAKE_BINARY_DIR}/g_test
-	COMMAND gcovr -r ${CMAKE_SOURCE_DIR}/.. --html --html-details -o cov.html ${CMAKE_BINARY_DIR}
+	COMMAND gcovr -r ${CMAKE_SOURCE_DIR}/../Src --html --html-details -o cov.html ${CMAKE_BINARY_DIR}
 )
