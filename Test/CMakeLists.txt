@@ -25,8 +25,8 @@ add_executable(g_test main.cpp ${SOURCES} ${TESTS})
 add_test(NAME c_test COMMAND g_test)
 
 add_custom_target(coverage
+	COMMAND find ./ -name "*.gcda" | xargs -n1 -r rm
 	COMMAND make g_test
 	COMMAND ${CMAKE_BINARY_DIR}/g_test
 	COMMAND gcovr -r ${CMAKE_SOURCE_DIR}/../Src --html --html-details -o cov.html ${CMAKE_BINARY_DIR}
-	COMMAND find ./ -name "*.gcda" | xargs rm
 )
