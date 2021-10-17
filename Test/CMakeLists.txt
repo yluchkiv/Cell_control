@@ -18,11 +18,14 @@ link_directories(../../googletest/build/lib)
 
 set(SOURCES
 	../Src/sw_component.cpp
-	../Src/ring_buffer.cpp)
+	../Src/ring_buffer.cpp
+	../Src/uart.cpp)
 
 set(TESTS
 	test_sw_component.cpp
-	test_ring_buffer.cpp)
+	test_ring_buffer.cpp
+	mock_uart_ll.cpp
+	stub_scope_lock.cpp)
 
 link_libraries(gtest gtest_main pthread)
 

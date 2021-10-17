@@ -18,7 +18,10 @@ include_directories(Inc)
 add_executable(${PROG}
 	main.cpp
 	Src/sw_component.cpp
-	Src/ring_buffer.cpp)
+	Src/ring_buffer.cpp
+	Src/uart.cpp
+	Src/scope_lock.cpp
+	Src/uart_ll.cpp)
 
 add_custom_command(
 	TARGET ${PROG} POST_BUILD

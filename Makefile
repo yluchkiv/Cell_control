@@ -17,7 +17,10 @@ AVRDUDE_FLAGS = -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
 
 SOURCE_CPP = \
 	main.cpp \
-	Src/ring_buffer.cpp
+	Src/ring_buffer.cpp \
+	Src/uart.cpp \
+	Src/uart_ll.cpp \
+	Src/scope_lock.cpp
 
 INCLUDE_DIR = \
 	./Inc
