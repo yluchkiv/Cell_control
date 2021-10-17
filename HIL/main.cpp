@@ -3,7 +3,6 @@
 
 #include "uart.h"
 
-
 int main() {
 	uart::init(9600, 20, 20);
 	uart::start();

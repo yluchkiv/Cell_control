@@ -25,7 +25,8 @@ set(TESTS
 	test_sw_component.cpp
 	test_ring_buffer.cpp
 	mock_uart_ll.cpp
-	stub_scope_lock.cpp)
+	stub_scope_lock.cpp
+	test_uart.cpp)
 
 link_libraries(gtest gtest_main pthread)
 

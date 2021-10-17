@@ -2,10 +2,7 @@
 
 #include <gtest/gtest.h>
 
-
-TEST(RingBufferTest, Test_0) { 
-	EXPECT_EQ(0U, ring_buffer(0).count()); 
-}
+TEST(RingBufferTest, Test_0) { EXPECT_EQ(0U, ring_buffer(0).count()); }
 
 TEST(RingBufferTest, Test_1) {
 	ring_buffer buf(567);
@@ -15,7 +12,7 @@ TEST(RingBufferTest, Test_1) {
 	buf.write(0);
 	EXPECT_EQ(1U, buf.count());
 }
-TEST(RingBufferTest, Test_2){
+TEST(RingBufferTest, Test_2) {
 	ring_buffer buf(234);
 	buf.write(4);
 	buf.write(56);
@@ -23,7 +20,7 @@ TEST(RingBufferTest, Test_2){
 
 	EXPECT_EQ(3U, buf.count());
 }
-TEST(RingBufferTest, Test_3){
+TEST(RingBufferTest, Test_3) {
 	ring_buffer buf(4);
 	buf.write(4);
 	buf.write(56);
@@ -33,7 +30,7 @@ TEST(RingBufferTest, Test_3){
 
 	EXPECT_EQ(4U, buf.count());
 }
-TEST(RingBufferTest, Test_4){
+TEST(RingBufferTest, Test_4) {
 	ring_buffer buf(4);
 	uint8_t result;
 	buf.write(4);
@@ -52,13 +49,13 @@ TEST(RingBufferTest, Test_4){
 
 	EXPECT_EQ(4U, buf.count());
 }
-TEST(RingBufferTest, Test_5){
+TEST(RingBufferTest, Test_5) {
 	ring_buffer buf(4);
 	uint8_t result;
 	buf.read(result);
 	EXPECT_EQ(0U, buf.count());
 }
-TEST(RingBufferTest, Test_6){
+TEST(RingBufferTest, Test_6) {
 	ring_buffer buf(4);
 	uint8_t result;
 	buf.write(34);
