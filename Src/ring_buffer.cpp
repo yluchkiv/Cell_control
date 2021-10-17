@@ -1,7 +1,8 @@
 #include "ring_buffer.h"
 
-ring_buffer::ring_buffer(size_t buf_size) {
+ring_buffer::ring_buffer(size_t buf_size) {   // найбільше значення (число) для процесора для одного такту
 	if (buf_size > 0) {
+		buf_size++;
 		data_ = new uint8_t[buf_size];
 	}
 	size_ = buf_size;
