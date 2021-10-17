@@ -20,7 +20,8 @@ SOURCE_CPP = \
 	../Src/ring_buffer.cpp \
 	../Src/uart.cpp \
 	../Src/uart_ll.cpp \
-	../Src/scope_lock.cpp
+	../Src/scope_lock.cpp \
+	../Src/operator_new.cpp
 
 INCLUDE_DIR = \
 	../Inc

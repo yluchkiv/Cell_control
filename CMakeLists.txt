@@ -21,7 +21,8 @@ add_executable(${PROG}
 	Src/ring_buffer.cpp
 	Src/uart.cpp
 	Src/scope_lock.cpp
-	Src/uart_ll.cpp)
+	Src/uart_ll.cpp
+	Src/operator_new.cpp)
 
 add_custom_command(
 	TARGET ${PROG} POST_BUILD

@@ -1,6 +1,3 @@
-#include <stddef.h>
-#include <stdlib.h>
-
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -39,11 +36,3 @@ int main() {
 
 	return 0;
 }
-
-void *operator new[](size_t size) { return malloc(size); }
-void operator delete[](void *ptr) { free(ptr); }
-void operator delete[](void *ptr, unsigned int) { free(ptr); }
-
-void *operator new(size_t size) { return malloc(size); }
-void operator delete(void *ptr) { free(ptr); }
-void operator delete(void *ptr, unsigned int) { free(ptr); }
