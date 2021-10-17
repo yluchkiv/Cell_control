@@ -1,13 +1,13 @@
 #include "string.h"
 #include <stdlib.h>
 
-#include "uart.h"
 #include "ring_buffer.h"
 #include "scope_lock.h"
+#include "uart.h"
 #include "uart_ll.h"
 
-static ring_buffer* tx_buf = nullptr;
-static ring_buffer* rx_buf = nullptr;
+static ring_buffer *tx_buf = nullptr;
+static ring_buffer *rx_buf = nullptr;
 
 bool uart::initialized_{false};
 size_t uart::tx_size_{};
@@ -26,9 +26,7 @@ bool uart::init(size_t baud, size_t tx_size, size_t rx_size) {
 	return true;
 }
 
-void uart::start() {
-	::uart_ll_start();
-}
+void uart::start() { ::uart_ll_start(); }
 
 size_t uart::available() {
 	scope_lock sl{};
@@ -53,7 +51,7 @@ bool uart::write(const uint8_t *data, size_t size) {
 	if (empty && (tx_buf->count() > 0)) {
 		uint8_t b;
 		tx_buf->read(b);
-		uart_ll_transmit(b);
+		::uart_ll_transmit(b);
 	}
 	return true;
 }

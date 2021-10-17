@@ -17,13 +17,13 @@ AVRDUDE_FLAGS = -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
 
 SOURCE_CPP = \
 	main.cpp \
-	Src/ring_buffer.cpp \
-	Src/uart.cpp \
-	Src/uart_ll.cpp \
-	Src/scope_lock.cpp
+	../Src/ring_buffer.cpp \
+	../Src/uart.cpp \
+	../Src/uart_ll.cpp \
+	../Src/scope_lock.cpp
 
 INCLUDE_DIR = \
-	./Inc
+	../Inc
 
 all:
 	$(CC) $(SOURCE_CPP) -I$(INCLUDE_DIR) -mmcu=$(MCU) -std=c++17 --output $(TARGET).elf -D F_CPU=16000000 -O2 -Wall -Wextra
