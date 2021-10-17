@@ -108,6 +108,7 @@ TEST(RingBufferTest, BufferCount) {
 TEST(RingBufferTest, BufferOverflow) {
 	ring_buffer buf(2);
 	EXPECT_EQ(buf.write(3), true);
+	EXPECT_EQ(buf.write(4), true);
 	EXPECT_EQ(buf.write(4), false);
 
 	uint8_t d;
@@ -118,7 +119,7 @@ TEST(RingBufferTest, BufferOverflow) {
 TEST(RingBufferTest, RollOver) {
 	ring_buffer buf(2);
 	EXPECT_EQ(buf.write(3), true);
-	EXPECT_EQ(buf.write(4), false);
+	EXPECT_EQ(buf.write(4), true);
 
 	uint8_t d;
 	EXPECT_EQ(buf.read(d), true);
@@ -126,7 +127,10 @@ TEST(RingBufferTest, RollOver) {
 
 	EXPECT_EQ(buf.write(5), true);
 	EXPECT_EQ(buf.read(d), true);
+	EXPECT_EQ(d, 4);
+	EXPECT_EQ(buf.read(d), true);
 	EXPECT_EQ(d, 5);
+	EXPECT_EQ(buf.count(), 0U);
 }
 
 TEST(RingBufferTest, BufferUnderflow) {

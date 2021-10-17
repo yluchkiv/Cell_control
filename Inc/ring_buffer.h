@@ -12,6 +12,11 @@ class ring_buffer {
 	bool read(uint8_t &b);
 	size_t count();
 
+	ring_buffer(const ring_buffer&) = delete;
+	ring_buffer(ring_buffer&&) = delete;
+	ring_buffer& operator=(const ring_buffer&) = delete;
+	ring_buffer& operator=(ring_buffer&&) = delete;
+
       private:
 	uint8_t *data_ = nullptr;
 	size_t size_ = 0;
