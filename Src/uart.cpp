@@ -58,13 +58,12 @@ bool uart::write(const uint8_t *data, size_t size) {
 
 size_t uart::read(uint8_t *data, size_t size) {
 	scope_lock sl{};
-	size_t count = 0;
-	for (size_t i = 0; i < size; i++) {
-		if (rx_buf->count() == 0) {
-			break;
-		}
+	size_t count = size;
+	if (count > rx_buf->count()) {
+		count = rx_buf->count();
+	}
+	for (size_t i = 0; i < count; i++) {
 		rx_buf->read(data[i]);
-		count++;
 	}
 	return count;
 }

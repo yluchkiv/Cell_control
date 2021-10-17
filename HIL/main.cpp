@@ -3,7 +3,6 @@
 int main() {
 	uart::init(9600, 20, 20);
 	uart::start();
-
 	for (;;) {
 		if (uart::available() > 0) {
 			uint8_t data;
@@ -11,6 +10,5 @@ int main() {
 			uart::write(&data, 1);
 		}
 	}
-
 	return 0;
 }

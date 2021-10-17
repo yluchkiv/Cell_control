@@ -9,7 +9,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(COMPILE_WARNING_MODE HIGH)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion -Wsign-conversion -Werror=pedantic")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra -pedantic -pedantic-errors")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g -Og -fprofile-arcs -ftest-coverage -fno-exceptions")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage")
 
 include_directories(../Inc)
@@ -34,8 +34,7 @@ add_executable(g_test main.cpp ${SOURCES} ${TESTS})
 add_test(NAME c_test COMMAND g_test)
 
 add_custom_target(coverage
-	COMMAND find ./ -name "*.gcda" | xargs -n1 -r rm
 	COMMAND make g_test
 	COMMAND valgrind --leak-check=full ${CMAKE_BINARY_DIR}/g_test
-	COMMAND gcovr -r ${CMAKE_SOURCE_DIR}/../Src --html --html-details -o cov.html ${CMAKE_BINARY_DIR}
+	COMMAND gcovr -d -r ${CMAKE_SOURCE_DIR}/../Src --html --html-details -o cov.html ${CMAKE_BINARY_DIR}
 )

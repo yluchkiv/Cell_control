@@ -11,8 +11,11 @@ TEST(UartTest, HandlesInput_Init) {
 	uart::start();
 	EXPECT_EQ(uart::available(), 0);
 
+	uint8_t b = 0;
+	EXPECT_EQ(uart::write(&b, 0), true);
 	EXPECT_EQ(uart::print("123"), true);
 	EXPECT_EQ(uart::print("123456789123456789"), false);
+	EXPECT_EQ(uart::print("123"), true);
 	EXPECT_EQ(uart::available(), 0);
 	EXPECT_EQ(mock_uart_ll_tx_isr(), '2');
 	EXPECT_EQ(mock_uart_ll_tx_isr(), '3');
@@ -28,6 +31,16 @@ TEST(UartTest, HandlesInput_Init) {
 	};
 	EXPECT_EQ(uart::read((uint8_t *)data, 15), 5);
 	ASSERT_STREQ("10584", data);
+
+	EXPECT_EQ(uart::available(), 0);
+	mock_uart_ll_rx_isr('1');
+	mock_uart_ll_rx_isr('2');
+	mock_uart_ll_rx_isr('3');
+	mock_uart_ll_rx_isr('4');
+	EXPECT_EQ(uart::available(), 4);
+	data[4] = '\0';
+	EXPECT_EQ(uart::read((uint8_t *)data, 4), 4);
+	ASSERT_STREQ("1234", data);
 }
 
 TEST(UartTest, HandlesInput_InitZero) {
