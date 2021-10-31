@@ -13,7 +13,7 @@ bool uart::initialized_{false};
 size_t uart::tx_size_{};
 size_t uart::rx_size_{};
 
-bool uart::init(size_t baud, size_t tx_size, size_t rx_size) {
+bool uart::init(uint32_t baud, size_t tx_size, size_t rx_size) {
 	if (initialized_) {
 		return false;
 	}

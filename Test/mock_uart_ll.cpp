@@ -3,7 +3,7 @@
 static ring_buffer *s_rx_buf{nullptr};
 static ring_buffer *s_tx_buf{nullptr};
 
-void uart_ll_init(size_t baud, ring_buffer *rx_buf, ring_buffer *tx_buf) {
+void uart_ll_init(uint32_t baud, ring_buffer *rx_buf, ring_buffer *tx_buf) {
 	static_cast<void>(baud);
 	s_rx_buf = rx_buf;
 	s_tx_buf = tx_buf;

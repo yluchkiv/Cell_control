@@ -9,7 +9,7 @@ class scope_lock {
 	scope_lock(scope_lock &&) = delete;
 	scope_lock &operator=(const scope_lock &) = delete;
 	scope_lock &operator=(scope_lock &&) = delete;
-	uint8_t enabled_interrupts_{};
+	uint8_t enabled_interrupts_{0u};
 
       public:
 	scope_lock();

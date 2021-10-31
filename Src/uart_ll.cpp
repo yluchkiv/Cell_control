@@ -6,11 +6,11 @@
 static ring_buffer *s_rx_buf{nullptr};
 static ring_buffer *s_tx_buf{nullptr};
 
-void uart_ll_init(size_t baud, ring_buffer *rx_buf, ring_buffer *tx_buf) {
-	size_t ubrr = F_CPU / 16 / baud - 1;
+void uart_ll_init(uint32_t baud, ring_buffer *rx_buf, ring_buffer *tx_buf) {
+	uint32_t ubrr = F_CPU / 16 / baud - 1;
 	/* Set baud rate */
-	UBRR0H = (unsigned char)(ubrr >> 8);
-	UBRR0L = (unsigned char)ubrr;
+	UBRR0H = (uint8_t)(ubrr >> 8);
+	UBRR0L = (uint8_t)ubrr;
 	/* Enable receiver and transmitter */
 	UCSR0B = (1 << RXEN0) | (1 << TXEN0) | (1 << TXCIE0) | (1 << RXCIE0);
 	/* Set frame format: 8data, 2stop bit */

@@ -6,7 +6,7 @@
 
 class uart {
       public:
-	static bool init(size_t baud, size_t tx_size, size_t rx_size);
+	static bool init(uint32_t baud, size_t tx_size, size_t rx_size);
 	static void start();
 	static size_t available();
 	static bool print(const char *str);

@@ -18,10 +18,10 @@ class ring_buffer {
 	ring_buffer &operator=(ring_buffer &&) = delete;
 
       private:
-	uint8_t *data_ = nullptr;
-	size_t size_ = 0;
-	size_t head_ = 0;
-	size_t tail_ = 0;
+	uint8_t *data_{nullptr};
+	size_t size_{0u};
+	size_t head_{0u};
+	size_t tail_{0u};
 };
 
 #endif /* RING_BUFFER_H_ */
