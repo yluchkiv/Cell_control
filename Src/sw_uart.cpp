@@ -2,10 +2,10 @@
 
 #include "sw_uart.h"
 
-uint32_t sw_uart::baud_{};
-volatile uint8_t *sw_uart::ddr_{};
-volatile uint8_t *sw_uart::port_{};
-uint8_t sw_uart::pin_{};
+uint32_t sw_uart::baud_{0};
+volatile uint8_t *sw_uart::ddr_{nullptr};
+volatile uint8_t *sw_uart::port_{nullptr};
+uint8_t sw_uart::pin_{0};
 
 void sw_uart::init(uint32_t baud, volatile uint8_t *ddr, volatile uint8_t *port,
 		   uint8_t pin) {

@@ -19,7 +19,8 @@ link_directories(../../googletest/build/lib)
 set(SOURCES
 	../Src/sw_component.cpp
 	../Src/ring_buffer.cpp
-	../Src/uart.cpp)
+	../Src/uart.cpp
+	../Src/sw_uart.cpp)
 
 set(TESTS
 	test_sw_component.cpp
