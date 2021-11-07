@@ -1,5 +1,8 @@
 #include "uart.h"
 
+#include <stddef.h>
+#include <stdint.h>
+
 int main() {
 	uart::init(9600, 20, 20);
 	uart::start();
@@ -12,3 +15,5 @@ int main() {
 	}
 	return 0;
 }
+
+static_assert(sizeof(size_t) == 2, "Size is not correct");

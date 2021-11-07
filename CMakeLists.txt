@@ -22,7 +22,8 @@ add_executable(${PROG}
 	Src/uart.cpp
 	Src/scope_lock.cpp
 	Src/uart_ll.cpp
-	Src/operator_new.cpp)
+	Src/operator_new.cpp
+	Src/sw_uart.cpp)
 
 add_custom_command(
 	TARGET ${PROG} POST_BUILD

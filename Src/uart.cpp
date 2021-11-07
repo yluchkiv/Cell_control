@@ -35,7 +35,7 @@ size_t uart::available() {
 }
 
 bool uart::print(const char *str) {
-	size_t len = strlen(str);
+	size_t len = ::strlen(str);
 	return uart::write(reinterpret_cast<const uint8_t *>(str), len);
 }
 

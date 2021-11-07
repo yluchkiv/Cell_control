@@ -21,7 +21,8 @@ SOURCE_CPP = \
 	../Src/uart.cpp \
 	../Src/uart_ll.cpp \
 	../Src/scope_lock.cpp \
-	../Src/operator_new.cpp
+	../Src/operator_new.cpp \
+	../Src/sw_uart.cpp
 
 INCLUDE_DIR = \
 	../Inc
