@@ -1,9 +1,9 @@
-#include "uart.h"
 #include "sw_uart.h"
+#include "uart.h"
 
+#include <avr/io.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <avr/io.h>
 #include <util/delay.h>
 
 int main() {
