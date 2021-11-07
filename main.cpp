@@ -4,6 +4,7 @@
 #include "ring_buffer.h"
 #include "scope_lock.h"
 #include "uart.h"
+#include "sw_uart.h"
 
 class toggle {
       public:
@@ -15,6 +16,7 @@ int main() {
 	uart::init(9600, 20, 20);
 	uart::start();
 	DDRB |= 0b0010'0000;
+	sw_uart::init(19200, &DDRB, &PORTB, PORTB5);
 
 	unsigned char data = '0';
 	ring_buffer buf(64);

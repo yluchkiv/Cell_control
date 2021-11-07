@@ -1,4 +1,5 @@
 #include <string.h>
+#include <util/delay.h>
 
 #include "sw_uart.h"
 
@@ -25,5 +26,8 @@ void sw_uart::print(const char *str) {
 void sw_uart::write(const uint8_t *data, size_t size) {
 	// TODO: implement busy wait transmit
 	static_cast<void>(data);
-	static_cast<void>(size);
+	for (size_t i = 0; i < size; i++) {
+		_delay_ms(300);
+		*port_ ^= static_cast<uint8_t>(1u << pin_);
+	}
 }
