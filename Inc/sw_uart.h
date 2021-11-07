@@ -12,10 +12,10 @@ class sw_uart {
 	static void write(const uint8_t *data, size_t size);
 
       private:
-	static uint32_t baud_;
-	static volatile uint8_t *ddr_;
+	static uint16_t bit_delay_;
+	static uint8_t reg_mask_;
+	static uint8_t inv_mask_;
 	static volatile uint8_t *port_;
-	static uint8_t pin_;
 };
 
 #endif /* SW_UART_H_ */
