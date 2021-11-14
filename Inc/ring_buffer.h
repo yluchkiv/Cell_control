@@ -6,7 +6,7 @@
 
 class ring_buffer {
       public:
-	ring_buffer(size_t buf_size);
+	explicit ring_buffer(size_t buf_size);
 	~ring_buffer();
 	bool write(uint8_t b);
 	bool read(uint8_t &b);
