@@ -41,6 +41,6 @@ size_t ring_buffer::count() {
 	if (head_ >= tail_) {
 		return head_ - tail_;
 	} else {
-		return head_ - tail_ + size_;
+		return size_ + head_ - tail_;
 	}
 }
